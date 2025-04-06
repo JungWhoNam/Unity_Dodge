@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody playerRigidbody; // 이동에 사용할 리지드바디 컴포넌트
     public float speed = 8f; // 이동 속력
 
+    private int health = 3;
+
     void Start()
     {
 
@@ -28,7 +30,12 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        // 자신의 게임 오브젝트를 비활성화
-        gameObject.SetActive(false);
+        health -= 1;
+
+        if (health <= 0)
+        {
+            // 자신의 게임 오브젝트를 비활성화
+            gameObject.SetActive(false);
+        }
     }
 }
