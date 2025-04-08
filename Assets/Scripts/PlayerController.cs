@@ -38,4 +38,11 @@ public class PlayerController : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void IncreaseHealth(int amt)
+    {
+        if (amt <= 0) return;
+
+        health += amt;
+    }
 }
