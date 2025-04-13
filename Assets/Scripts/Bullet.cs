@@ -30,6 +30,9 @@ public class Bullet : MonoBehaviour
             {
                 // 상대방 PlayerController 컴포넌트의 Die() 메서드 실행
                 playerController.Die();
+
+                // 게임 오브젝트 파괴
+                Destroy(gameObject);
             }
         }
     }
