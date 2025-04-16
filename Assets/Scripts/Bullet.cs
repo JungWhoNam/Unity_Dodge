@@ -16,6 +16,17 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
+    void Update()
+    {
+        PlayerController playerController = FindFirstObjectByType<PlayerController>();
+        if (playerController != null)
+        {
+            // TODO 총알이 Player를 따라가게 구현
+            Vector3 dir = playerController.transform.position - transform.position;
+            bulletRigidbody.linearVelocity = dir.normalized * speed;
+        }
+    }
+
     // 트리거 충돌 시 자동으로 실행되는 메서드
     void OnTriggerEnter(Collider other)
     {

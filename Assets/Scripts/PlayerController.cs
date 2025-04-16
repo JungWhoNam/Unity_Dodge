@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     {
         health -= 1;
 
+        this.GetComponent<Renderer>().material.color = Color.yellow;
+
         if (health <= 0)
         {
             // 자신의 게임 오브젝트를 비활성화

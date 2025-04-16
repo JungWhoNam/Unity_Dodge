@@ -1158,7 +1158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 884586966}
   speed: 8
-  hpText: {fileID: 1683351642}
 --- !u!1 &886065669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,7 +2336,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133096794}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f54cbbbc1e526f418bd40afd84a9204, type: 3}
   m_Name: 
