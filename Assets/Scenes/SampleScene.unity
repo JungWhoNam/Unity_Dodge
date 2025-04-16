@@ -1191,6 +1191,8 @@ MonoBehaviour:
   gameoverText: {fileID: 943604252}
   timeText: {fileID: 1960164982}
   recordText: {fileID: 1434921934}
+  hpText: {fileID: 1683351642}
+  playerController: {fileID: 884586967}
 --- !u!4 &886065671
 Transform:
   m_ObjectHideFlags: 0

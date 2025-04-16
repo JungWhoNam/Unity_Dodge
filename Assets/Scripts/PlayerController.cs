@@ -1,18 +1,14 @@
 using UnityEngine;
-using TMPro; // TextMeshPro 라이브러리
 
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody playerRigidbody; // 이동에 사용할 리지드바디 컴포넌트
     public float speed = 8f; // 이동 속력
 
-    public TMP_Text hpText; // HP 표시할 텍스트 컴포넌트
-
     private int health = 3;
 
     void Start()
     {
-        UpdateHPTextUI();
     }
 
     void Update()
@@ -35,8 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         health -= 1;
 
-        UpdateHPTextUI();
-
         if (health <= 0)
         {
             // 자신의 게임 오브젝트를 비활성화
@@ -57,15 +51,10 @@ public class PlayerController : MonoBehaviour
         if (amt <= 0) return;
 
         health += amt;
-
-        UpdateHPTextUI();
     }
-
-    public void UpdateHPTextUI()
+    
+    public int GetHealth()
     {
-        if (hpText != null)
-        {
-            hpText.text = "HP: " + health.ToString();
-        }
+        return health;
     }
 }
