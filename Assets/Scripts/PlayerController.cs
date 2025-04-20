@@ -21,17 +21,25 @@ public class PlayerController : MonoBehaviour
         float xSpeed = xInput * speed;
         float zSpeed = zInput * speed;
 
+
+        // Option #1: 리지드바디 사용
         // Vector3 속도를 (xSpeed, 기존 y 속도, zSpeed)으로 생성
-        Vector3 newVelocity = new Vector3(xSpeed, playerRigidbody.linearVelocity.y, zSpeed);
-        // 리지드바디의 속도에 newVelocity를 할당
-        playerRigidbody.linearVelocity = newVelocity;
+        //Vector3 newVelocity = new Vector3(xSpeed, playerRigidbody.linearVelocity.y, zSpeed);
+        //playerRigidbody.linearVelocity = newVelocity;
+
+
+        // Option #2: transform.position 사용
+        Vector3 newVelocity = new Vector3(xSpeed,0, zSpeed);
+        transform.position += newVelocity * Time.deltaTime;
     }
 
     public void Die()
     {
         health -= 1;
 
-        this.GetComponent<Renderer>().material.color = Color.yellow;
+        // 플레이어 초기 색상 (0, 100, 165).
+        Color c = new Color(0f * health / 3f, 100f / 255f * health / 3f, 164f / 255f * health / 3f);
+        GetComponent<MeshRenderer>().material.color = c;
 
         if (health <= 0)
         {
@@ -53,6 +61,10 @@ public class PlayerController : MonoBehaviour
         if (amt <= 0) return;
 
         health += amt;
+
+        // 플레이어 초기 색상 (0, 100, 165).
+        Color c = new Color(0f * health / 3f, 100f / 255f * health / 3f, 164f / 255f * health / 3f);
+        GetComponent<MeshRenderer>().material.color = c;
     }
     
     public int GetHealth()
