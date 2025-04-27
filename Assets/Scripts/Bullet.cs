@@ -5,6 +5,8 @@ public class Bullet : MonoBehaviour
     public float speed = 8f; // 탄알 이동 속력
     private Rigidbody bulletRigidbody; //이동에 사용할 리지드바디 컴포넌트
 
+    private float timeSince; // 생성된 후 시간
+
     void Start()
     {
         // 게임 오브젝트에서 Rigidbody 컴포넌트를 찾아 bulletRigidbody에 할당
@@ -25,6 +27,9 @@ public class Bullet : MonoBehaviour
             Vector3 dir = playerController.transform.position - transform.position;
             bulletRigidbody.linearVelocity = dir.normalized * speed;
         }
+
+        timeSince += Time.deltaTime;
+        GetComponent<MeshRenderer>().material.color = new Color(1f - timeSince / 3f, 0, 0);
     }
 
     // 트리거 충돌 시 자동으로 실행되는 메서드

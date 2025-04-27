@@ -25,21 +25,31 @@ public class BulletSpawner : MonoBehaviour
         // timeAfterSpawn을 갱신
         timeAfterSpawn += Time.deltaTime;
 
-        // 최근 생성 시점에서부터 누적된 시간이, 생성 주기보다 크거나 같다면
-        if (timeAfterSpawn >= spawnRate)
+        float dist = Vector3.Distance(transform.position, target.position);
+        if (dist < 2f)
         {
-            // 누적된 시간을 리셋
-            timeAfterSpawn = 0f;
+            GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0);
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
 
-            // bulletPrefab의 복제본을
-            // transform.position 위치와 transform.rotation 회전으로 생성
-            GameObject bullet
-                = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            // 생성된 bullet 게임 오브젝트의 정면 방향이 target을 향하도록 회전
-            bullet.transform.LookAt(target);
+            // 최근 생성 시점에서부터 누적된 시간이, 생성 주기보다 크거나 같다면
+            if (timeAfterSpawn >= spawnRate)
+            {
+                // 누적된 시간을 리셋
+                timeAfterSpawn = 0f;
 
-            // 다음번 생성 간격을 spawnRateMin, spawnRateMax 사이에서 랜덤 지정
-            spawnRate = Random.Range(spawnRateMin, spawnRateMax);
+                // bulletPrefab의 복제본을
+                // transform.position 위치와 transform.rotation 회전으로 생성
+                GameObject bullet
+                    = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                // 생성된 bullet 게임 오브젝트의 정면 방향이 target을 향하도록 회전
+                bullet.transform.LookAt(target);
+
+                // 다음번 생성 간격을 spawnRateMin, spawnRateMax 사이에서 랜덤 지정
+                spawnRate = Random.Range(spawnRateMin, spawnRateMax);
+            }
         }
     }
 }

@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
             surviveTime += Time.deltaTime;
             // 갱신한 생존 시간을 timeText 텍스트 컴포넌트를 통해 표시
             timeText.text = "Time: " + (int)surviveTime;
+
+            if (PlayerPrefs.GetFloat("BestTime") < surviveTime)
+            {
+                timeText.text += " (NEW)";
+            }
         }
         else
         {
